@@ -1,0 +1,4 @@
+flask
+faker
+tensorflow
+scikit-learn

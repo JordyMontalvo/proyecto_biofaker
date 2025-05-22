@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generador BioFakerIA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .resultado {
+      margin-top: 1.5rem;
+      white-space: pre-wrap;
+      background: #e9ecef;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🧬 Generador de Especies Sintéticas</h2>
+    <button onclick="generar()">Generar</button>
+    <div class="resultado" id="resultado">Haz clic para generar una especie sintética...</div>
+  </div>
+
+  <script>
+    async function generar() {
+      const res = await fetch("/generar");
+      const data = await res.json();
+      const texto = `🧬 Especie: ${data.especie}
+🏞️ Hábitat: ${data.habitat}
+📝 Descripción: ${data.descripcion}
+🧬 Genoma sintético: ${data.genoma}
+⚠️ Nivel de riesgo: ${data.riesgo}`;
+      document.getElementById("resultado").innerText = texto;
+    }
+  </script>
+</body>
+</html>
